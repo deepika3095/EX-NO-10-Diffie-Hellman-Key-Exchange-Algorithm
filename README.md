@@ -56,19 +56,16 @@ int main()
     scanf("%lld", &G);
     printf("The value of G: %lld\n\n", G);
 
-    // Alice chooses private key a
     a = 4;
     printf("The private key a for Alice : %lld\n", a);
-    x = power(G, a, P); // Alice's public key
+    x = power(G, a, P);
 
-    // Bob chooses private key b
     b = 3;
     printf("The private key b for Bob : %lld\n\n", b);
-    y = power(G, b, P); // Bob's public key
+    y = power(G, b, P);
 
-    // Generating the secret keys
-    ka = power(y, a, P); // Secret key for Alice
-    kb = power(x, b, P); // Secret key for Bob
+    ka = power(y, a, P); 
+    kb = power(x, b, P); 
 
     printf("Secret key for the Alice is : %lld\n", ka);
     printf("Secret Key for the Bob is : %lld\n", kb);
