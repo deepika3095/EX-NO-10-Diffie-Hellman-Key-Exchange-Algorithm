@@ -26,52 +26,52 @@ To Implement Diffie Hellman Key Exchange Algorithm
 ```
 #include <stdio.h>
 
-long long int power(long long int a, long long int b, long long int P)
+long long power(long long base, long long exp, long long mod)
 {
-    long long int result = 1;
-    a = a % P;
-    while (b > 0)
+    long long result = 1;
+    base = base % mod;
+
+    while (exp > 0)
     {
-        if (b % 2 == 1)
-        {
-            result = (result * a) % P;
-        }
-        b = b / 2;
-        a = (a * a) % P;
+        result = (result * base) % mod;
+        exp--;
     }
     return result;
 }
 
 int main()
 {
-    long long int P, G, x, a, y, b, ka, kb;
+    long long P, G;
+    long long a, b;     // private keys
+    long long x, y;     // public keys
+    long long ka, kb;   // shared secret keys
 
-    printf("\n**Diffie-Hellman Key Exchange algorithm\n\n");
+    printf("\n*** Diffie-Hellman Key Exchange ***\n\n");
 
-    printf("Enter the value of P: ");
+    printf("Enter value of P: ");
     scanf("%lld", &P);
-    printf("The value of P: %lld\n", P);
 
-    printf("Enter the value of G (Primitive root of P): ");
+    printf("Enter value of G: ");
     scanf("%lld", &G);
-    printf("The value of G: %lld\n\n", G);
 
     a = 4;
-    printf("The private key a for Alice : %lld\n", a);
-    x = power(G, a, P);
-
     b = 3;
-    printf("The private key b for Bob : %lld\n\n", b);
+
+    printf("\nPrivate key of Alice (a): %lld\n", a);
+    printf("Private key of Bob   (b): %lld\n\n", b);
+
+    x = power(G, a, P);    
     y = power(G, b, P);
 
-    ka = power(y, a, P); 
-    kb = power(x, b, P); 
+    ka = power(y, a, P);   
+    kb = power(x, b, P);   
 
-    printf("Secret key for the Alice is : %lld\n", ka);
-    printf("Secret Key for the Bob is : %lld\n", kb);
+    printf("Secret key computed by Alice: %lld\n", ka);
+    printf("Secret key computed by Bob  : %lld\n", kb);
 
     return 0;
 }
+
 ```
 
 
