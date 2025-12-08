@@ -46,19 +46,19 @@ int main()
     long long x, y;     // public keys
     long long ka, kb;   // shared secret keys
 
-    printf("\n*** Diffie-Hellman Key Exchange ***\n\n");
+    printf("Diffie-Hellman Key Exchange\n");
 
     printf("Enter value of P: ");
-    scanf("%lld", &P);
+    scanf("%d", &P);
 
     printf("Enter value of G: ");
-    scanf("%lld", &G);
+    scanf("%d", &G);
 
     a = 4;
     b = 3;
 
-    printf("\nPrivate key of Alice (a): %lld\n", a);
-    printf("Private key of Bob   (b): %lld\n\n", b);
+    printf("\nPrivate key of Alice (a): %d\n", a);
+    printf("Private key of Bob   (b): %d\n\n", b);
 
     x = power(G, a, P);    
     y = power(G, b, P);
@@ -66,8 +66,8 @@ int main()
     ka = power(y, a, P);   
     kb = power(x, b, P);   
 
-    printf("Secret key computed by Alice: %lld\n", ka);
-    printf("Secret key computed by Bob  : %lld\n", kb);
+    printf("Secret key computed by Alice: %d\n", ka);
+    printf("Secret key computed by Bob  : %d\n", kb);
 
     return 0;
 }
